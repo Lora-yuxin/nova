@@ -4,7 +4,7 @@ import * as governorContract from '../abi/Governor';
 import * as comoContract from '../abi/ERC20';
 import { Collection, Objekt, Transfer, Vote, Como } from '../model';
 import { type Log, type Transaction, } from '@subsquid/evm-processor';
-import { type Entity, Store } from '@subsquid/typeorm-store';
+import { Store } from '@subsquid/typeorm-store';
 import { Logger } from '@subsquid/logger';
 import axios, { type AxiosResponse } from 'axios';
 import axiosRetry from 'axios-retry';
@@ -12,7 +12,7 @@ import { ZeroAddress } from 'ethers';
 
 require('dotenv').config();
 
-const entities = new Map<string, Entity[]>();
+const entities = new Map<string, { id: string }[]>();
 const client = axios.create({
     validateStatus: (status) => { return (status >= 200 && status < 300) || status == 404 }
 });
